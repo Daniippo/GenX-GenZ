@@ -206,6 +206,18 @@
 <script>
   const INDEX_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSh1fH_xkjSAl9Dn3yIUbft6vnvcb4CMsFrWPHtq5C5slLDt8CKh5MNgftev7bXw7JhPPVe8_VlRFxL/pub?gid=0&single=true&output=csv';
   const flipSound = document.getElementById('flipSound');
+let isMuted = false; // Stato iniziale: l'audio è attivo
+const muteBtn = document.getElementById('muteBtn');
+
+muteBtn.onclick = (e) => {
+  e.stopPropagation(); // Evita che il click attivi altre funzioni
+  isMuted = !isMuted;  // Inverte lo stato (se era true diventa false e viceversa)
+  
+  // Cambia l'icona in base allo stato
+  muteBtn.innerText = isMuted ? "🔇" : "🔊";
+  console.log("Audio silenziato:", isMuted);
+};
+ 
   let allCards = [], remainingCards = [], shownHistory = [], historyIndex = -1;
   let currentDeckName = "";
   let isFlipped = false, timer = null, timeLeft = 300;
@@ -386,10 +398,11 @@
 /* MODIFICA: Logica del Click per l'Effetto Volta Pagina */
 flipCard.onclick = () => {
   // Suono sempre al click
-  if (flipSound) {
+if (flipSound && !isMuted) { // Suona solo se NON è silenziato
     flipSound.currentTime = 0;
-    flipSound.play().catch(() => {}); 
+    flipSound.play().catch(() => {});
   }
+
 
   if (!isFlipped) {
     // Gira per mostrare la risposta
