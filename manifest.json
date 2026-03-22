@@ -1,17 +1,17 @@
 {
-  "short_name": "Ripasso finale",
-  "name": "Ripasso finale",
+  "short_name": "GenX-GenZ",
+  "name": "Traduttore GenX a GenZ",
   "icons": [
     {
-      "src": "icon-512.png",
+      "src": "xxxxx.png", // Modificato il nome del file dell'icona
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
   ],
   "start_url": "./index.html",
-  "background_color": "#fdfbf7",
+  "background_color": "#ffffff", // Sfondo bianco pulito
   "display": "standalone",
   "scope": "./",
-  "theme_color": "#bfa100"
+  "theme_color": "#6200ea" // Esempio di colore tema (vedi suggerimenti sotto)
 }
