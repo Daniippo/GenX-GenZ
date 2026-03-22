@@ -57,27 +57,49 @@
     .pill { padding: 8px 15px; background: #fff; color: var(--text); border-radius: 20px; font-weight: bold; font-size: 0.85rem; border: 1px solid #eee; }
 
 /* MODIFICA: CSS per Effetto Volta Pagina (Book-style) */
-    .scene { width: 100%; height: 70vh; max-height: 480px; perspective: 1500px; margin: 0 auto; } /* Aumentata la prospettiva */
+/* 1. Il contenitore che crea la profondità 3D */
+.scene { 
+  width: 100%; 
+  height: 60vh; 
+  max-height: 400px; 
+  perspective: 1000px; 
+  margin: 20px auto; 
+}
 
-    .card { 
-      width: 100%; height: 100%; position: relative; 
-      transform-style: preserve-3d; 
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Transizione leggermente più lenta */
-      cursor: pointer; 
-      /* IMPORTANTE: La carta ruota attorno al suo bordo sinistro */
-      transform-origin: left center; 
-    }
-    
-    /* MODIFICA: La carta ruota di 180 gradi e si "sposta" a destra per restare centrata */
-    .card.flipped { transform: translateX(100%) rotateY(-180deg); }
-    
-    .face { 
-      position: absolute; inset: 0; backface-visibility: hidden; border-radius: 20px; 
-      padding: 25px; box-shadow: var(--card-shadow); display: flex; 
-      flex-direction: column; align-items: flex-start; text-align: left; overflow: hidden; 
-    }
-    .front { background: var(--deck-color, #fff); color: white; }
-    .back { transform: rotateY(180deg); background: white; color: var(--text); }
+/* 2. La carta che ruota */
+.card { 
+  width: 100%; 
+  height: 100%; 
+  position: relative; 
+  transform-style: preserve-3d; 
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+  cursor: pointer;
+}
+
+/* 3. Classe che attiva la rotazione (senza spostamenti laterali) */
+.card.flipped { 
+  transform: rotateY(180deg); 
+}
+
+/* 4. Le facce della carta */
+.face { 
+  position: absolute; 
+  inset: 0; 
+  backface-visibility: hidden; /* Fondamentale per non far sparire la faccia */
+  -webkit-backface-visibility: hidden; /* Per Safari mobile */
+  border-radius: 20px; 
+  padding: 25px; 
+  box-shadow: var(--card-shadow); 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.back { 
+  transform: rotateY(180deg); /* La faccia posteriore è già girata */
+  background: white; 
+}
+  /*  .front { background: var(--deck-color, #fff); color: white; }
+
     
     .label { font-size: 0.7rem; text-transform: uppercase; font-weight: bold; opacity: 0.7; margin-bottom: 10px; }
     .content { font-size: 1.2rem; width: 100%; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
