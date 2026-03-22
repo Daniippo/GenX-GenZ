@@ -320,6 +320,10 @@
 
   flipCard.onclick = () => {
     if(!isFlipped) {
+      if (flipSound) {
+        flipSound.currentTime = 0; // Resetta il suono se clicchi velocemente
+        flipSound.play();          // Fa partire il suono
+      }
       flipCard.classList.add('flipped');
       isFlipped = true;
       shownHistory[historyIndex].viewedA = true;
