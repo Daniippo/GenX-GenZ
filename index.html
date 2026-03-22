@@ -56,9 +56,20 @@
     .btn.success { background: #059669; }
     .pill { padding: 8px 15px; background: #fff; color: var(--text); border-radius: 20px; font-weight: bold; font-size: 0.85rem; border: 1px solid #eee; }
 
-    .scene { width: 100%; height: 70vh; max-height: 480px; perspective: 1200px; margin: 0 auto; }
-    .card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
-    .card.flipped { transform: rotateY(180deg); }
+/* MODIFICA: CSS per Effetto Volta Pagina (Book-style) */
+    .scene { width: 100%; height: 70vh; max-height: 480px; perspective: 1500px; margin: 0 auto; } /* Aumentata la prospettiva */
+
+    .card { 
+      width: 100%; height: 100%; position: relative; 
+      transform-style: preserve-3d; 
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Transizione leggermente più lenta */
+      cursor: pointer; 
+      /* IMPORTANTE: La carta ruota attorno al suo bordo sinistro */
+      transform-origin: left center; 
+    }
+    
+    /* MODIFICA: La carta ruota di 180 gradi e si "sposta" a destra per restare centrata */
+    .card.flipped { transform: translateX(100%) rotateY(-180deg); }
     
     .face { 
       position: absolute; inset: 0; backface-visibility: hidden; border-radius: 20px; 
