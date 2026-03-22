@@ -94,11 +94,20 @@
   flex-direction: column; 
 }
 
-.back { 
-  transform: rotateY(180deg); /* La faccia posteriore è già girata */
-  background: white; 
-}
-  /*  .front { background: var(--deck-color, #fff); color: white; }
+    /* FRONT: Gradiente moderno e testo centrato meglio */
+    .front { 
+      background: linear-gradient(135deg, var(--deck-color, #2563eb) 0%, #1d4ed8 100%); 
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* BACK: Gradiente leggero per la risposta (effetto carta premium) */
+    .back { 
+      transform: rotateY(180deg); 
+      background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%); 
+      color: var(--text); 
+      border: 1px solid #e5e7eb;
+    }
 
     
     .label { font-size: 0.7rem; text-transform: uppercase; font-weight: bold; opacity: 0.7; margin-bottom: 10px; }
