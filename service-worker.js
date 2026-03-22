@@ -3,7 +3,7 @@ const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './xxxxx.png',        // <--- Aggiunta la tua nuova icona!
+  './genx-z.png',        // <--- Aggiunta la tua nuova icona!
   './style.css',        // Aggiungi qui anche il tuo file CSS se ne hai uno
   './script.js'         // E il file con la logica del traduttore
 ];
