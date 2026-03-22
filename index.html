@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards Pro - Controllo Studio</title>
+  <title>Flashcards Pro - ControlflipCard.onclick = () => lo Studio</title>
   
   <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -352,25 +352,30 @@
   }
 
 /* MODIFICA: Logica del Click per l'Effetto Volta Pagina */
-  flipCard.onclick = () => {
-    // 1. Riproduci sempre il suono, sia che mostriamo la risposta, sia che mostriamo la domanda successiva.
-    if (flipSound) {
-      flipSound.currentTime = 0; 
-      flipSound.play();
-    }
+flipCard.onclick = () => {
+  // Suono sempre al click
+  if (flipSound) {
+    flipSound.currentTime = 0;
+    flipSound.play().catch(() => {}); 
+  }
 
-    if(!isFlipped) {
-      // Mostriamo la Risposta
-      flipCard.classList.add('flipped');
-      isFlipped = true;
-      shownHistory[historyIndex].viewedA = true;
-    } else {
-      // Mostriamo la Domanda Successiva
-      flipCard.classList.remove('flipped'); // Rimuoviamo la classe, la carta torna a Front, ma con lo stesso effetto 3D
-      isFlipped = false;
-      showNext(); // Carichiamo i dati della domanda successiva
-    }
-  };
+  if (!isFlipped) {
+    // Gira per mostrare la risposta
+    flipCard.classList.add('flipped');
+    isFlipped = true;
+    shownHistory[historyIndex].viewedA = true;
+  } else {
+    // 1. Inizia a rigirare la carta verso il fronte
+    flipCard.classList.remove('flipped');
+    isFlipped = false;
+    
+    // 2. Aspetta un attimo (metà animazione) prima di cambiare il testo
+    // così il cambio avviene mentre la carta è di taglio e non si nota lo scatto
+    setTimeout(() => {
+      showNext();
+    }, 300); 
+  }
+};
 
   document.getElementById('skipBtn').onclick = (e) => { e.stopPropagation(); showNext(); };
   document.getElementById('prevBtn').onclick = (e) => { 
