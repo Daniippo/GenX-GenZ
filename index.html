@@ -329,17 +329,24 @@
     }, 1000);
   }
 
+/* MODIFICA: Logica del Click per l'Effetto Volta Pagina */
   flipCard.onclick = () => {
+    // 1. Riproduci sempre il suono, sia che mostriamo la risposta, sia che mostriamo la domanda successiva.
+    if (flipSound) {
+      flipSound.currentTime = 0; 
+      flipSound.play();
+    }
+
     if(!isFlipped) {
-      if (flipSound) {
-        flipSound.currentTime = 0; // Resetta il suono se clicchi velocemente
-        flipSound.play();          // Fa partire il suono
-      }
+      // Mostriamo la Risposta
       flipCard.classList.add('flipped');
       isFlipped = true;
       shownHistory[historyIndex].viewedA = true;
     } else {
-      showNext();
+      // Mostriamo la Domanda Successiva
+      flipCard.classList.remove('flipped'); // Rimuoviamo la classe, la carta torna a Front, ma con lo stesso effetto 3D
+      isFlipped = false;
+      showNext(); // Carichiamo i dati della domanda successiva
     }
   };
 
