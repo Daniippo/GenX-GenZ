@@ -215,6 +215,7 @@ muteBtn.onclick = (e) => {
   
   // Cambia l'icona in base allo stato
   muteBtn.innerText = isMuted ? "🔇" : "🔊";
+  muteBtn.style.opacity = isMuted ? "0.5" : "1";
   console.log("Audio silenziato:", isMuted);
 };
  
