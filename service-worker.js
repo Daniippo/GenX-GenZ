@@ -6,6 +6,8 @@ const ASSETS = [
   './genx-z.png',        // <--- Aggiunta la tua nuova icona!
   './style.css',        // Aggiungi qui anche il tuo file CSS se ne hai uno
   './script.js'         // E il file con la logica del traduttore
+  './TurningPage.mp3'         //file con il suono
+  
 ];
 
 // Fase di installazione
