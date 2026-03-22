@@ -3,7 +3,7 @@
   "name": "Traduttore GenX a GenZ",
   "icons": [
     {
-      "src": "xxxxx.png", // Modificato il nome del file dell'icona
+      "src": "genx-z.png", // Modificato il nome del file dell'icona
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
